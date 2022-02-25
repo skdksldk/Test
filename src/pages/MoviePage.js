@@ -10,7 +10,7 @@ const MoviePage = () => {
 
   useEffect(() => {
     store.getMovies(0);
-  }, []);
+  }, [store]);
 
   const renderMovie = () => {
     const movies = store.movieList.map(movie => {
