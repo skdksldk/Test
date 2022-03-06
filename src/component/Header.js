@@ -72,6 +72,17 @@ const Header = (props) => {
   return useObserver(() => (
     <header className={store.isMovieSelected ? 'Header on' : 'Header'}>
       <div className="Header__Inner">
+      <div className="Search__Wrap">
+          <input
+            type="text"
+            placeholder="검색하기"
+            onChange={handleKeywordChange}
+            onKeyPress={handleKeypress}
+          />
+          <i className="fas fa-search"
+            onClick={handleSearch}
+          ></i>
+        </div>
         <Tabs
           value={value}
           onChange={handleChange1}
