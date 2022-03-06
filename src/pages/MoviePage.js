@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useObserver } from 'mobx-react-lite';
 import Movie from '../component/Movie';
-import '../css/Movie.css';
 import bgpng from '../images/bg.png';
 import store from '../store/MovieStore';
 

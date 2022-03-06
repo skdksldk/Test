@@ -3,7 +3,6 @@ import { useObserver } from 'mobx-react-lite';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { withStyles } from '@material-ui/core/styles';
-import '../css/header.css';
 import store from '../store/MovieStore';
 
 const styles = {
