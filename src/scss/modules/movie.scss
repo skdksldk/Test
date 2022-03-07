@@ -2,7 +2,17 @@
     position: absolute;
     width: 55vw;
     right: 20px;
-    top: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
 }
 .Movie__Section.on {
     opacity: 0;
@@ -25,10 +35,10 @@
     width: 8px;
 }
 .Movie__Wrapper::-webkit-scrollbar-track {
-
+    background: #121328;
 }
 .Movie__Wrapper::-webkit-scrollbar-thumb {
-    background-color: #121328;
+    background-color: #000;
     border-radius: 8px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -67,25 +77,9 @@
     top: 0;
     width: 100vw;
     height: 100vh;
-    background: #121328;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transition: all 0.8s 0.2s ease-in-out;
-    -webkit-transition: all 0.8s 0.2s ease-in-out;
-    -moz-transition: all 0.8s 0.2s ease-in-out;
-    -ms-transition: all 0.8s 0.2s ease-in-out;
-    -o-transition: all 0.8s 0.2s ease-in-out;
 }
 
 .Detail__View.on {
-    transform: translateX(0);
-    -webkit-transform: translateX(0);
-    -moz-transform: translateX(0);
-    -ms-transform: translateX(0);
-    -o-transform: translateX(0);
 }
 
 .Movie__Bg {
