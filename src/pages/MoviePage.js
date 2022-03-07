@@ -7,35 +7,43 @@ import store from '../store/MovieStore';
 
 const MoviePage = () => {
 
-  useEffect(() => {
-    store.getMovies(0);
-  }, [store]);
+    const posterUrl = 'https://image.tmdb.org/t/p/original';
+    let bgStyle = null;
 
-  const renderMovie = () => {
-    const movies = store.movieList.map(movie => {
-      return <Movie
-        key={movie.id}
-        id={movie.id}
-        title={movie.title}
-        poster={movie.poster_path}
-        bg={movie.backdrop_path}
-        vote_average={movie.vote_average}
-        store={store}
-      />
-    })
-    return movies;
- };
+    useEffect(() => {
+      store.getMovies(0);
+    }, []);
 
-  const posterUrl = 'https://image.tmdb.org/t/p/original';
-  const bgStyle = {
-        backgroundImage: 'url('+bgpng+'), url(' + posterUrl + store.movieBg + ')',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center center',
-        opacity: '.5'
-        };
+    const renderMovie = () => {
+      const movies = store.movieList.map(movie => {
+        return <Movie
+          key={movie.id}
+          id={movie.id}
+          title={movie.title}
+          poster={movie.poster_path}
+          bg={movie.backdrop_path}
+          vote_average={movie.vote_average}
+          store={store}
+        />
+      })
+      return movies;
+   };
 
-    return useObserver(() => (
+    return useObserver((
+      bgStyle = {
+            backgroundImage: 'url(' + posterUrl + store.movieBg + ')',
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+            opacity: ".5"
+          }
+
+    ) => (
       <>
+      <div className={store.isMovieSelected ? 'Detail__View on' : 'Detail__View'}>
+        <div className="Movie__Bg">
+          <div className="Bg" style={bgStyle} />
+        </div>
+      </div>
       <div className={store.isMovieSelected ? 'Movie__Section on' : 'Movie__Section'}>
         <h3>{store.sortMethodName}</h3>
         <div className="Movie__Wrapper">
@@ -45,7 +53,6 @@ const MoviePage = () => {
       </div>
       </>
     ));
-  //}
 }
 
 export default MoviePage;
