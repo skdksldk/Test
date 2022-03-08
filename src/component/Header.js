@@ -37,6 +37,7 @@ const styles = {
 const Header = (props) => {
 
   const [value, setValue] = useState(0);
+  const [value2, setValue2] = useState(0);
 
   const classes = props;
 
@@ -55,6 +56,9 @@ const Header = (props) => {
   const handleChange1 = (event, value) => {
     setValue(value);
   };
+  const handleChange2 = (event, value) => {
+    setValue(value2);
+  };
   const handleKeywordChange = (e) => {
     store._setSearchKeyword(e.target.value);
   };
@@ -66,6 +70,13 @@ const Header = (props) => {
     if (e.key === 'Enter') {
       handleSearch();
     }
+  };
+  const handleBackHome = () => {
+    store.backHome();
+    store.setClearSelectedMovie();
+    store.setRecommendCountRestore();
+    store.setCastCountRestore();
+    store.setHideTrailer();
   };
 
   return useObserver(() => (
@@ -106,6 +117,19 @@ const Header = (props) => {
             label="최근 개봉 &amp; 예정 영화"
             classes={{ root: classes.tabRoot, selected: classes.tabSelected }}
             onClick={handleUpcoming}
+          />
+        </Tabs>
+      </div>
+      <div className="Back__Home">
+        <Tabs
+          value={value2}
+          onChange={handleChange2}
+          classes={{ root: classes.tabsRoot, indicator: classes.tabsIndicator }}
+        >
+          <Tab
+            label="뒤로 가기"
+            classes={{ root: classes.tabRoot}}
+            onClick={handleBackHome}
           />
         </Tabs>
       </div>
