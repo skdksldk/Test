@@ -6,37 +6,37 @@ import { withStyles } from '@material-ui/core/styles';
 import store from '../store/MovieStore';
 
 const styles = {
-  tabsRoot: {},
-  tabsIndicator: {
-    backgroundColor: 'transparent',
-  },
-  tabRoot: {
-    fontSize: '16px',
-    fontWeight: '400',
-    fontFamily: [
-      'Noto Sans KR',
-      'Roboto',
-      'sans-serif',
-    ],
-    opacity: '0.6',
-    '&:hover': {
-      color: '#fff',
-      opacity: '.8',
+    tabsRoot: {},
+    tabsIndicator: {
+      backgroundColor: 'transparent',
     },
-    '&tabSelected': {
-      color: '#fff',
-      opacity: '1',
+    tabRoot: {
+      fontSize: '16px',
+      fontWeight: '400',
+      fontFamily: [
+          'Noto Sans KR',
+          'Roboto',
+          'sans-serif',
+      ],
+      opacity: '0.6',
+      '&:hover': {
+          color: '#fff',
+          opacity: '.8',
+      },
+      '&tabSelected': {
+          color: '#fff',
+          opacity: '1',
+      },
+      '&:focus': {
+          color: '#fff',
+      }
     },
-    '&:focus': {
-      color: '#fff',
-    }
-  },
-  tabSelected: {},
+    tabSelected: {},
 }
 
 const Header = (props) => {
 
-  const [value, setValue] = useState(0);
+  const [value1, setValue1] = useState(0);
   const [value2, setValue2] = useState(0);
 
   const classes = props;
@@ -54,10 +54,10 @@ const Header = (props) => {
     store.getMovies(3);
   };
   const handleChange1 = (event, value) => {
-    setValue(value);
+    setValue1(value1);
   };
   const handleChange2 = (event, value) => {
-    setValue(value2);
+    setValue2(value2);
   };
   const handleKeywordChange = (e) => {
     store._setSearchKeyword(e.target.value);
@@ -94,7 +94,7 @@ const Header = (props) => {
           ></i>
         </div>
         <Tabs
-          value={value}
+          value={value1}
           onChange={handleChange1}
           classes={{ root: classes.tabsRoot, indicator: classes.tabsIndicator }}
         >
@@ -120,7 +120,7 @@ const Header = (props) => {
           />
         </Tabs>
       </div>
-      <div className="Back__Home">
+      <div className="Header__Back">
         <Tabs
           value={value2}
           onChange={handleChange2}

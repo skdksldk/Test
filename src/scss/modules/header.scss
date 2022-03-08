@@ -3,6 +3,61 @@
     right: 30px;
     top: 0;
     z-index: 100;
+    &__Inner {
+        transition: all 0.5s ease-in-out;
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+    }
+    &__Back {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: all 0.5s ease-in-out;
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+    }
+    &__Search {
+        margin-right: 50px;
+        display: inline-block;
+        vertical-align: middle;
+        input {
+            height: 38px;
+            line-height: 38px;
+            border: none;
+            background: transparent;
+            color: #ccc;
+            font-size: 16px;
+            padding: 0 10px;
+            text-align: center;
+            margin: 5px 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            width: 150px;
+            outline: none;
+            transition: background 0.5s ease-in-out;
+            -webkit-transition: background 0.5s ease-in-out;
+            -moz-transition: background 0.5s ease-in-out;
+            -ms-transition: background 0.5s ease-in-out;
+            -o-transition: background 0.5s ease-in-out;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+        }
+        input:focus {
+            background: rgba(0, 0, 0, 0.3);
+        }
+    }
+    &__Inner>div {
+        display: inline-block;
+        vertical-align: middle;
+    }
 }
 .Header .Header__Inner {
     transition: all 0.5s ease-in-out;
@@ -31,6 +86,10 @@
     visibility: hidden;
     opacity: 0;
 }
+.Header.on .Header__Back {
+    visibility: visible;
+    opacity: 1;
+}
 .gnb ul {
     list-style: none;
     margin: 0;
@@ -52,48 +111,8 @@
     opacity: 1;
 }
 
-.Search__Wrap {
-    margin-right: 50px;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.Search__Wrap input {
-    height: 38px;
-    line-height: 38px;
-    border: none;
-    background: transparent;
-    color: #ccc;
-    font-size: 16px;
-    padding: 0 10px;
-    text-align: center;
-    margin: 5px 0;
-    font-family: 'Noto Sans KR', sans-serif;
-    width: 150px;
-    outline: none;
-    transition: background 0.5s ease-in-out;
-    -webkit-transition: background 0.5s ease-in-out;
-    -moz-transition: background 0.5s ease-in-out;
-    -ms-transition: background 0.5s ease-in-out;
-    -o-transition: background 0.5s ease-in-out;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-}
-
-.Search__Wrap input:focus {
-    background: rgba(0, 0, 0, 0.3);
-}
-
 .fa-search {
     font-size: 18px;
     color: #ccc;
     cursor: pointer;
-}
-
-.Header .Header__Inner>div {
-    display: inline-block;
-    vertical-align: middle;
 } 
