@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useObserver } from 'mobx-react-lite';
 import Movie from '../component/Movie';
+import MovieDetail from '../component/MovieDetail';
 import bgpng from '../images/bg.png';
 import store from '../store/MovieStore';
 
@@ -27,7 +28,29 @@ const MoviePage = () => {
         />
       })
       return movies;
-   };
+    };
+
+    const renderDetail = () => {
+     const detailInfo = store.selectedMovie;
+     console.log("확인5 : "+detailInfo.runtime);
+     console.log("확인3 : "+detailInfo);
+     return <MovieDetail
+              key={detailInfo.id}
+              title={detailInfo.title}
+              og_title={detailInfo.original_title}
+              poster={detailInfo.poster_path}
+              runtime={detailInfo.runtime}
+              vote_average={detailInfo.vote_average}
+              genre={detailInfo.genres}
+              summary={detailInfo.overview}
+              tagline={detailInfo.tagline}
+              store={store}
+            />
+    };
+
+    const handleCloseTrailer = () => {
+      store.setHideTrailer();
+    };
 
     return useObserver((
       bgStyle = {
@@ -40,6 +63,9 @@ const MoviePage = () => {
     ) => (
       <>
       <div className={store.isMovieSelected ? 'Detail__View on' : 'Detail__View'}>
+          <div className={store.isMovieSelected ? 'Detail__Info on' : 'Detail__Info'} dir="rtl">
+            <div dir="ltr">{store.isMovieSelected ? renderDetail() : null}</div>
+          </div>
         <div className="Movie__Bg">
           <div className="Bg" style={bgStyle} />
         </div>

@@ -82,7 +82,7 @@ const Header = (props) => {
   return useObserver(() => (
     <header className={store.isMovieSelected ? 'Header on' : 'Header'}>
       <div className="Header__Inner">
-      <div className="Search__Wrap">
+      <div className="Header__Search">
           <input
             type="text"
             placeholder="검색하기"

@@ -20,6 +20,11 @@ const store = observable({
     isExisTrailer: false,
     isShowTrailer: false,
 
+    credits: [],
+    director: '',
+    cast: [],
+    castCount: 3,
+
     getApi(sortPram) {
 
         let SORT = '';
@@ -79,7 +84,7 @@ const store = observable({
     },
     setMovie(movieData) {
 
-        this.movieList = movieData
+        this.movieList = movieData;
     },
     checkMovieLoad(movieObj) {
 
@@ -98,11 +103,7 @@ const store = observable({
 
         this.searchWordFix = this.searchWord;
     },
-    checkMovieLoad(movieObj) {
-
-        if (!_.isEmpty(movieObj)) return this.isMovieLoded = true;
-        else return false;
-    },
+   
     changeMovieBg(theMovieBg) {
 
         this.movieBg = theMovieBg;
@@ -126,12 +127,38 @@ const store = observable({
     setRecommendCountRestore() {
         this.recommendCount = 3;
     },
-    setCastCountRestore() {
-        this.castCount = 3;
+    upCastCount() {
+        this.castCount += 8;
     },
-    setHideTrailer() {
-        this.isShowTrailer = false;
-    }
+    async getRecommendMovie(id){
+
+        const rMovie = await this.callRecommendMovie(id);
+        this.setRecommendMovie(rMovie.results);
+      },
+      recommendMore(){
+
+        this.recommendCount = this.recommendCount + 6;
+      },
+      async getDetailMovie(id){
+        const sMovie = await this.callDetail(id);
+        this.setDetailInfo(sMovie);
+        // console.log(this.selectedMovie);
+      },
+      callDetail(id){
+
+        const DEFAULT_URL = 'https://api.themoviedb.org/3';
+        const API_KEY = '?api_key=dc11dbd0605b4d60cc66ce5e8363e063';
+        const LANGUAGE_KR = '&language=ko-KR';
+        const MOVIE_ID = '/movie/'+id;
+
+        return axios.get(DEFAULT_URL + MOVIE_ID + API_KEY + LANGUAGE_KR)
+          .then (response => response.data)
+          .catch (err => console.log(err))
+      },
+      setDetailInfo(detailInfo){
+
+        this.selectedMovie = detailInfo;
+      },
    
 })
 
