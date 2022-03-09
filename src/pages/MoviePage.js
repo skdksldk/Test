@@ -32,8 +32,7 @@ const MoviePage = () => {
 
     const renderDetail = () => {
      const detailInfo = store.selectedMovie;
-     console.log("확인5 : "+detailInfo.runtime);
-     console.log("확인3 : "+detailInfo);
+     
      return <MovieDetail
               key={detailInfo.id}
               title={detailInfo.title}
@@ -63,18 +62,18 @@ const MoviePage = () => {
     ) => (
       <>
       <div className={store.isMovieSelected ? 'Detail__View on' : 'Detail__View'}>
-          <div className={store.isMovieSelected ? 'Detail__Info on' : 'Detail__Info'} dir="rtl">
+          <div className={store.isMovieSelected ? 'Detail__View__Info on' : 'Detail__View__Info'} dir="rtl">
             <div dir="ltr">{store.isMovieSelected ? renderDetail() : null}</div>
           </div>
-        <div className="Movie__Bg">
-          <div className="Bg" style={bgStyle} />
+        <div className="Movie__View__Bg">
+          <div className="Detail__View__Bg__Bg" style={bgStyle} />
         </div>
       </div>
       <div className={store.isMovieSelected ? 'Movie__Section on' : 'Movie__Section'}>
         <h3>{store.sortMethodName}</h3>
-        <div className="Movie__Wrapper">
-          { store.isMovieLoded ? renderMovie() : <div className="Loading"></div> }
-          { store.isSuccessSearch ? null : <div className="Search__Failed"><strong>{store.searchWordFix}</strong> 로 검색한 결과가 없습니다.</div>}
+        <div className="Movie__Section__Wrapper">
+          { store.isMovieLoded ? renderMovie() : <div className="Movie__Section__Wrapper__Loading"></div> }
+          { store.isSuccessSearch ? null : <div className="Movie__Section__Wrapper__Search"><strong>{store.searchWordFix}</strong> 로 검색한 결과가 없습니다.</div>}
         </div>
       </div>
       </>

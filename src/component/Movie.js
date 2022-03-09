@@ -15,7 +15,7 @@ const Movie = (props) => {
     store.movieSelectToggle();
     store.getDetailMovie(selectedMovieId);
 
-    var DetailBox = document.querySelector('.Detail__Info');
+    var DetailBox = document.querySelector('.Detail__View__Info');
     DetailBox.scrollTo(0, 0);
   };
 
@@ -26,8 +26,8 @@ const Movie = (props) => {
   const posterUrl = 'https://image.tmdb.org/t/p/original';
   return useObserver(() => (
     <div className="Movie__Box"  onMouseOver={handleMouseEnter} onClick={handleMovieSelect} onMouseLeave={store.isMovieSelected ? handleBgRestore() : null}>
-      <div className="Poster__Wrap"><img src={posterUrl + props.poster} alt={props.title} /></div>
-      <div className="Movie__Info">
+      <div className="Movie__Box__Poster"><img src={posterUrl + props.poster} alt={props.title} /></div>
+      <div className="Movie__Box__Info">
         <h4>{props.title}</h4>
         <p><i className="fas fa-star"></i>{props.vote_average}</p>
       </div>
